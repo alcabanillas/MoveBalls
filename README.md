@@ -50,3 +50,8 @@ https://alcabanillas.github.io/
 ## Notes
 
 [^1]: https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
+
+## BackTracking
+
+Thanks to FontAwesome for some contents: https://github.com/FortAwesome/Font-Awesome#readme
+
