@@ -13,7 +13,7 @@ https://user-images.githubusercontent.com/106959153/175811982-3840a961-4fb4-494f
 
 El uso de forEach [^1] en un array:
 
-´´´
+```
   balls.forEach (element => {
       calcNewPosition(element);
       let currentBall = document.getElementById(element.name);
@@ -21,7 +21,7 @@ El uso de forEach [^1] en un array:
       currentBall.style.top = element.top + 'px';    
     }
   )
-´´´
+```
 
 
 ## Versioning
@@ -43,5 +43,10 @@ we deviate from normal SemVer in the following ways:**
 * Bug fixes will be addressed as `patch` releases unless they include backward
   incompatibility then they will be `minor` releases
 
+## Team
+
+https://alcabanillas.github.io/
+
+## Notes
 
 [^1]: https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
