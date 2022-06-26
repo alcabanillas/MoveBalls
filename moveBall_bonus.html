@@ -1,0 +1,184 @@
+<div id="ball0" style="
+  z-index:5;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:green"></div>
+
+<div id="ball1" style="
+  z-index:5;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:red"></div>
+
+<div id="ball2" style="
+  z-index:5;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:blue"></div>  
+
+<div id="ball3" style="
+  z-index:5;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:black"></div>   
+
+
+<script>
+
+var velocityX = 5;
+var velocityY = 3;
+var positionX = 0;
+var positionY = 0;
+var ball = document.getElementById('ball');
+var width = 50;
+
+// YOUR CODE 
+// ----------------
+
+var leftToRight = true;
+var upToDown = true;
+var edgeX = 400;
+var edgeY = 550;
+
+var ball0 = {
+  width,
+  velocityX,
+  velocityY,
+  top : 50,
+  left : 50,
+  name : 'ball0',
+  color : 'green'
+}
+
+var ball1 = {
+  width,
+  velocityX,
+  velocityY,
+  top : 100,
+  left : 50,
+  name : 'ball1',
+  color : 'red'
+}
+
+var ball2 = {
+  width,
+  velocityX,
+  velocityY,  
+  top : 200,
+  left : 250,
+  name : 'ball2',
+  color : 'blue'
+}
+
+var ball3 = {
+  width,
+  velocityX,
+  velocityY,  
+  top : 100,
+  left : 250,
+  name : 'ball3',
+  color : 'black'
+}
+
+
+var balls = [ball0, ball1, ball2, ball3];
+var newBalls = [];
+
+
+function calcNewPosition(currentBall){
+  if (currentBall.left > edgeX || currentBall.left < 0) {
+    currentBall.velocityX = -1 * currentBall.velocityX;
+  }
+  currentBall.left += currentBall.velocityX;
+
+  if (currentBall.top > edgeY || currentBall.top < 0){
+    currentBall.velocityY = -1* currentBall.velocityY;
+  }
+  
+  currentBall.top += currentBall.velocityY;
+}
+
+
+function sameX(ball1 , ball2) {
+  let space = 0;
+
+  if (ball1.left > ball2.left) {
+    space = ball1.left - ball2.left;
+  }
+  else {
+    space = ball2.left - ball1.left;
+  }
+
+  return (space < width);
+}
+
+function sameY(ball1, ball2) {
+  let space = 0;
+
+  if (ball1.top > ball2.top) {
+    space = ball1.top - ball2.top;
+  }
+  else {
+    space = ball2.top - ball1.top;
+  }
+
+  return (space < width);
+}
+
+
+function ballCollision (ball1, ball2) {
+  return (sameX(ball1, ball2) && sameY(ball1, ball2));
+}
+
+
+function moveBalls(){
+  let counter = 0;
+  let len = balls.length;
+
+  balls.forEach (element => {
+      calcNewPosition(element);
+      let currentBall = document.getElementById(element.name);
+      currentBall.style.left = element.left + 'px';
+      currentBall.style.top = element.top + 'px';    
+    }
+  )
+
+  newBalls = [];
+
+  console.log('Balls before' + balls.length);
+
+  while (balls.length > 0) {
+    let lastBall = balls.pop();
+
+    balls.forEach(element=>{
+      if (ballCollision(element, lastBall))
+      {
+        lastBall.velocityX = -1 * lastBall.velocityX;
+        lastBall.velocityY = -1 * lastBall.velocityY;
+      }
+    })
+
+    newBalls.push(lastBall);
+  }
+  
+  balls = newBalls;
+}
+
+setInterval(moveBalls, 10);
+</script>
