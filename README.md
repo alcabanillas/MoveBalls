@@ -53,5 +53,5 @@ https://alcabanillas.github.io/
 
 ## BackTracking
 
-Thanks to FontAwesome for some contents: https://github.com/FortAwesome/Font-Awesome#readme
+Thanks to FontAwesome for some README contents: https://github.com/FortAwesome/Font-Awesome#readme
 
